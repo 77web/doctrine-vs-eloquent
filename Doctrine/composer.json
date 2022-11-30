@@ -1,0 +1,12 @@
+{
+    "name": "d-vs-e/doctrine",
+    "authors": [
+        {
+            "name": "77web",
+            "email": "info@77-web.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.13"
+    }
+}
