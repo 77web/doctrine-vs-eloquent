@@ -1,0 +1,12 @@
+{
+    "name": "d-vs-e/eloquent",
+    "authors": [
+        {
+            "name": "77web",
+            "email": "info@77-web.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^9.42"
+    }
+}
