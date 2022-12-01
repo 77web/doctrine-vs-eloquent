@@ -8,5 +8,10 @@
     ],
     "require": {
         "doctrine/orm": "^2.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Entity\\": "Entity"
+        }
     }
 }
