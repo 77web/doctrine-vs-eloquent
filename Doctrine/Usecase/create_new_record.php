@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 require __DIR__.'/../vendor/autoload.php';
 
 $newBook = new Book();
-$newBook->setTitle('Symfony6 The Fast Track');
+$newBook->setTitle('ちょうぜつソフトウェア設計入門');
 
 /** @var EntityManagerInterface $entityManager */
 $entityManager = require __DIR__.'/bootstrap.php';
