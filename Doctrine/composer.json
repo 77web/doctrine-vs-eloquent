@@ -7,6 +7,12 @@
         }
     ],
     "require": {
-        "doctrine/orm": "^2.13"
+        "doctrine/orm": "^2.13",
+        "symfony/cache": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Entity\\": "Entity"
+        }
     }
 }
