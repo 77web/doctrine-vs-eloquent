@@ -18,6 +18,9 @@ class Book
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $title;
 
+    #[ORM\Column(type: 'integer')]
+    private int $price;
+
     public function getId(): string
     {
         return $this->id;
@@ -36,5 +39,15 @@ class Book
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
     }
 }
