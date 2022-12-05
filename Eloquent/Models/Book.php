@@ -11,10 +11,12 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $title
+ * @property int $price
  */
 class Book extends Model
 {
     public $fillable = [
-        'title'
+        'title',
+        'price',
     ];
 }
