@@ -21,6 +21,10 @@ class Book
     #[ORM\Column(type: 'integer')]
     private int $price;
 
+    #[ORM\ManyToOne(targetEntity: Author::class)]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    private Author $author;
+
     public function getId(): string
     {
         return $this->id;
@@ -49,5 +53,15 @@ class Book
     public function setPrice(int $price): void
     {
         $this->price = $price;
+    }
+
+    public function getAuthor(): Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(Author $author): void
+    {
+        $this->author = $author;
     }
 }
