@@ -12,11 +12,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $title
  * @property int $price
+ * @property Author $author
  */
 class Book extends Model
 {
     public $fillable = [
         'title',
         'price',
+        'author_id',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
 }
