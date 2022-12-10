@@ -31,7 +31,7 @@ $exprHelper2 = $qb2->expr();
 /** @var array<Book> $books2 */
 $books2 = $qb2
     ->where($exprHelper2->like('b.title', ':title_symfony'))
-    ->where($exprHelper2->isNull('b.description'))
+    ->andWhere($exprHelper2->isNull('b.description'))
     ->setParameter('title_symfony', '%Symfony%')
     ->getQuery()
     ->getResult()
