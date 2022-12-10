@@ -25,6 +25,9 @@ class Book
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     private Author $author;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $description;
+
     public function getId(): string
     {
         return $this->id;
@@ -63,5 +66,15 @@ class Book
     public function setAuthor(Author $author): void
     {
         $this->author = $author;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }
