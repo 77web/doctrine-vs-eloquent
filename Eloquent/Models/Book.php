@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property int $price
  * @property Author $author
+ * @property string|null $description
  */
 class Book extends Model
 {
@@ -20,6 +21,7 @@ class Book extends Model
         'title',
         'price',
         'author_id',
+        'description',
     ];
 
     public function author()
