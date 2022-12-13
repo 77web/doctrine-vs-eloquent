@@ -14,3 +14,4 @@ $authors = Author::query()
     ->union(Book::query()->select('id', 'title'))
     ->get()
 ;
+// $authorsにはid, nameのみを持つAuthorモデルのインスタンスと、booksテーブルのid, title(nameという名前で収納される）を持つAuthorモデルのインスタンスが混在したコレクション
