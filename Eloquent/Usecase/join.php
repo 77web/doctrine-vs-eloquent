@@ -6,6 +6,7 @@ use App\Models\Author;
 use App\Models\Book;
 
 require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/bootstrap.php';
 
 $book1 = Book::find(1);
 echo $book1->author->name; // Authorのnameを見ることができる

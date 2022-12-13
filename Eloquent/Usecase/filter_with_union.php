@@ -7,6 +7,7 @@ use App\Models\Book;
 use Illuminate\Database\Eloquent\Collection;
 
 require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/bootstrap.php';
 
 /** @var Collection<Author> $authors */
 $authors = Author::query()
