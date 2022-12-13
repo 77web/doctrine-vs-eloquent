@@ -8,6 +8,7 @@ CREATE TABLE `books` (
                          `id` int NOT NULL AUTO_INCREMENT,
                          `title` varchar(255) NOT NULL,
                          `author_id` int NOT NULL,
+                         `price` int NOT NULL,
                          PRIMARY KEY (`id`),
                          FOREIGN KEY (`author_id`)
                              REFERENCES `authors`(`id`)
