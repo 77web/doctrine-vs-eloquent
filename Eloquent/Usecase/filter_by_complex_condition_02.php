@@ -6,6 +6,7 @@ use App\Models\Book;
 use Illuminate\Database\Eloquent\Collection;
 
 require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/bootstrap.php';
 
 // タイトルにSymfonyを含み、値段が2000,3000,4000円ぴったりである本
 /** @var Collection<Book> $books1 */
