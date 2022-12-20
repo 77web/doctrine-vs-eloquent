@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Table(name: 'reactions')]
 #[ORM\Entity]
 #[ORM\InheritanceType('SINGLE_TABLE')]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'string')]
@@ -20,7 +21,7 @@ abstract class Reaction
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: Book::class)]
+    #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'reactions')]
     #[ORM\JoinColumn(onDelete: 'cascade')]
     private ?Book $book;
 

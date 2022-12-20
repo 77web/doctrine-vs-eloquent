@@ -15,7 +15,7 @@ class Book
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
-    private string $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $title;
@@ -30,7 +30,7 @@ class Book
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description;
 
-    #[ORM\OneToMany(targetEntity: Reaction::class, cascade: ['persist'], orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Reaction::class, cascade: ['persist'], orphanRemoval: true)]
     private Collection $reactions;
 
     public function __construct()
@@ -38,12 +38,12 @@ class Book
         $this->reactions = new ArrayCollection();
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -88,6 +88,9 @@ class Book
         $this->description = $description;
     }
 
+    /**
+     * @return Collection<Reaction>
+     */
     public function getReactions(): Collection
     {
         return $this->reactions;

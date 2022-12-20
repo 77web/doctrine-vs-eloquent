@@ -1,10 +1,10 @@
 CREATE TABLE `authors` (
-                           `id` serial NOT NULL,
+                           `id` int primary key,
                            `name` varchar(255) NOT NULL
 );
 
 CREATE TABLE `books` (
-                         `id` serial NOT NULL,
+                         `id` int primary key,
                          `title` varchar(255) NOT NULL,
                          `description` text DEFAULT NULL,
                          `author_id` int NOT NULL,
@@ -12,4 +12,10 @@ CREATE TABLE `books` (
                          FOREIGN KEY (`author_id`)
                              REFERENCES `authors`(`id`)
                              ON DELETE CASCADE
+);
+
+CREATE TABLE `reactions` (
+    `id` int primary key,
+    `book_id` int NOT NULL,
+    `type` VARCHAR(255) NOT NULL
 );
