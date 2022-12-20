@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -27,6 +29,14 @@ class Book
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description;
+
+    #[ORM\OneToMany(targetEntity: Reaction::class, cascade: ['persist'], orphanRemoval: true)]
+    private Collection $reactions;
+
+    public function __construct()
+    {
+        $this->reactions = new ArrayCollection();
+    }
 
     public function getId(): string
     {
@@ -76,5 +86,29 @@ class Book
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getReactions(): Collection
+    {
+        return $this->reactions;
+    }
+
+    public function setReactions(Collection $reactions): void
+    {
+        $this->reactions = $reactions;
+    }
+
+    public function addReaction(Reaction $reaction): void
+    {
+        if (!$this->reactions->contains($reaction)) {
+            $reaction->setBook($this);
+            $this->reactions->add($reaction);
+        }
+    }
+
+    public function removeReaction(Reaction $reaction): void
+    {
+        $reaction->setBook(null);
+        $this->reactions->removeElement($reaction);
     }
 }
