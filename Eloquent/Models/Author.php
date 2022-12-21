@@ -24,4 +24,9 @@ class Author extends Model
     {
         return $this->hasMany(Book::class);
     }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
 }

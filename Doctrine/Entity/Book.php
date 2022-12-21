@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -13,7 +15,7 @@ class Book
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
-    private string $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $title;
@@ -28,12 +30,20 @@ class Book
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description;
 
-    public function getId(): string
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Reaction::class, cascade: ['persist'], orphanRemoval: true)]
+    private Collection $reactions;
+
+    public function __construct()
+    {
+        $this->reactions = new ArrayCollection();
+    }
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -76,5 +86,32 @@ class Book
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return Collection<Reaction>
+     */
+    public function getReactions(): Collection
+    {
+        return $this->reactions;
+    }
+
+    public function setReactions(Collection $reactions): void
+    {
+        $this->reactions = $reactions;
+    }
+
+    public function addReaction(Reaction $reaction): void
+    {
+        if (!$this->reactions->contains($reaction)) {
+            $reaction->setBook($this);
+            $this->reactions->add($reaction);
+        }
+    }
+
+    public function removeReaction(Reaction $reaction): void
+    {
+        $reaction->setBook(null);
+        $this->reactions->removeElement($reaction);
     }
 }

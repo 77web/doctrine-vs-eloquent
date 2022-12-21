@@ -30,4 +30,9 @@ class Book extends Model
     {
         return $this->belongsTo(Author::class);
     }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likable');
+    }
 }

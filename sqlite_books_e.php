@@ -9,7 +9,7 @@ require __DIR__.'/Doctrine/vendor/autoload.php';
 
 $em = require __DIR__.'/Doctrine/Usecase/bootstrap.php';
 
-$sqls = file_get_contents(__DIR__.'/sql/sqlite_books.sql');
+$sqls = file_get_contents(__DIR__.'/sql/sqlite_books_e.sql');
 foreach (explode(';', $sqls) as $sql) {
     $em->getConnection()->executeStatement($sql);
 }
@@ -21,3 +21,4 @@ for ($i = 1; $i <= 5; $i++) {
         $conn->insert('books', ['id' => $i * 10 + $j, 'author_id' => $i, 'title' => 'book' . $j, 'description' => 'description' . $j, 'price' => 100 * $i * $j]);
     }
 }
+

@@ -14,8 +14,8 @@ CREATE TABLE `books` (
                              ON DELETE CASCADE
 );
 
-CREATE TABLE `reactions` (
-    `id` int primary key,
-    `book_id` int NOT NULL,
-    `type` VARCHAR(255) NOT NULL
+CREATE TABLE `likes` (
+                             `id` int primary key,
+                             `likable_id` int NOT NULL,
+                             `likable_type` VARCHAR(255) NOT NULL
 );

@@ -15,12 +15,12 @@ class Author
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue(strategy: 'AUTO')]
-    private string $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
-    #[ORM\OneToMany(mappedBy: Author::class, targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Book::class)]
     private Collection $books;
 
     public function __construct()
@@ -28,12 +28,12 @@ class Author
         $this->books = new ArrayCollection();
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(string $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
