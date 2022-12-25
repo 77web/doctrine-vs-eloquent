@@ -7,10 +7,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\SoftDeleteable;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'books')]
 #[ORM\HasLifecycleCallbacks]
+#[SoftDeleteable(fieldName: 'deletedAt')]
 class Book
 {
     #[ORM\Id]
@@ -39,6 +41,9 @@ class Book
 
     #[ORM\Column(name: 'updated_at', type: 'datetime_immutable')]
     private \DateTimeImmutable $updatedAt;
+
+    #[ORM\Column(name: 'deleted_at', type: 'datetime_immutable')]
+    private ?\DateTimeImmutable $deletedAt = null;
 
     public function __construct()
     {
@@ -153,5 +158,20 @@ class Book
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getDeletedAt(): ?\DateTimeImmutable
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeImmutable $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
+    public function isDeleted(): bool
+    {
+        return $this->deletedAt !== null;
     }
 }
