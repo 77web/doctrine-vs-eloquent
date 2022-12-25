@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Entity\AuthorStat;
-use App\Entity\Book;
 use Doctrine\ORM\EntityManagerInterface;
 
 require __DIR__.'/../vendor/autoload.php';

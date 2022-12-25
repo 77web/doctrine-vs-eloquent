@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
- * @property int $booksCount
+ * @property int $books_count
  */
 class AuthorStat extends Model
 {
