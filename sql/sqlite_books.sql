@@ -11,6 +11,7 @@ CREATE TABLE `books` (
                          `price` int NOT NULL,
                          `created_at` datetime NOT NULL,
                          `updated_at` datetime NOT NULL,
+                         `deleted_at` datetime DEFAULT NULL,
                          FOREIGN KEY (`author_id`)
                              REFERENCES `authors`(`id`)
                              ON DELETE CASCADE
