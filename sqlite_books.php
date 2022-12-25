@@ -15,9 +15,10 @@ foreach (explode(';', $sqls) as $sql) {
 }
 
 $conn = $em->getConnection();
+$now = date('Y-m-d H:i:s');
 for ($i = 1; $i <= 5; $i++) {
     $conn->insert('authors', ['id' => $i, 'name' => 'author' . $i]);
     for ($j = 1; $j <= 10; $j++) {
-        $conn->insert('books', ['id' => $i * 10 + $j, 'author_id' => $i, 'title' => 'book' . $j, 'description' => 'description' . $j, 'price' => 100 * $i * $j]);
+        $conn->insert('books', ['id' => $i * 10 + $j, 'author_id' => $i, 'title' => 'book' . $j, 'description' => 'description' . $j, 'price' => 100 * $i * $j, 'updated_at' => $now, 'created_at' => $now]);
     }
 }
