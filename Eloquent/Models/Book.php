@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Book
@@ -20,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Book extends Model
 {
+    use SoftDeletes;
+
     public $fillable = [
         'title',
         'price',
