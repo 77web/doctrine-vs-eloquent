@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Doctrine\DBAL\Logging\Middleware;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 $config = ORMSetup::createAttributeMetadataConfiguration(
@@ -13,7 +15,7 @@ $config = ORMSetup::createAttributeMetadataConfiguration(
     cache: new ArrayAdapter(),
 );
 $config->setMiddlewares([
-    new Middleware(),
+    new Middleware(new Logger('doctrine', [new StreamHandler('php://stdout')])),
 ]);
 $conn = [
     'driver' => 'pdo_sqlite',
