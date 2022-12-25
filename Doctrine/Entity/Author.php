@@ -20,7 +20,7 @@ class Author
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Book::class, fetch: 'EAGER')]
     private Collection $books;
 
     public function __construct()
