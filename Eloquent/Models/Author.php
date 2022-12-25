@@ -20,6 +20,8 @@ class Author extends Model
         'name',
     ];
 
+    public $timestamps = false;
+
     public function books()
     {
         return $this->hasMany(Book::class);

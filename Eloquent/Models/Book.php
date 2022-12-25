@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $price
  * @property Author $author
  * @property string|null $description
+ * @property CarbonInterface $created_at
+ * @property CarbonInterface $updated_at
  */
 class Book extends Model
 {
@@ -24,7 +27,7 @@ class Book extends Model
         'description',
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function author()
     {
