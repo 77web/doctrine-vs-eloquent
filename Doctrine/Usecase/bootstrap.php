@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
+use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Logging\Middleware;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
+use Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter;
+use Gedmo\SoftDeleteable\SoftDeleteableListener;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -22,4 +25,12 @@ $conn = [
     'path' => __DIR__ . '/../db.sqlite',
 ];
 
-return EntityManager::create($conn, $config);
+$eventManager = new EventManager();
+$softDeletable = new SoftDeleteableListener();
+$eventManager->addEventSubscriber($softDeletable);
+
+$em = EntityManager::create($conn, $config, $eventManager);
+$config->addFilter('soft-deletable', new SoftDeleteableFilter($em));
+
+return $em;
+
