@@ -9,6 +9,8 @@ CREATE TABLE `books` (
                          `description` text DEFAULT NULL,
                          `author_id` int NOT NULL,
                          `price` int NOT NULL,
+                         `created_at` datetime NOT NULL,
+                         `updated_at` datetime NOT NULL,
                          FOREIGN KEY (`author_id`)
                              REFERENCES `authors`(`id`)
                              ON DELETE CASCADE
