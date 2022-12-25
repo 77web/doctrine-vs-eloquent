@@ -19,3 +19,5 @@ CREATE TABLE `reactions` (
     `book_id` int NOT NULL,
     `type` VARCHAR(255) NOT NULL
 );
+
+CREATE VIEW `author_stat` as select authors.id, authors.name, count(books.id) as books_count from authors left join books on books.author_id = authors.id group by authors.id, authors.name;
