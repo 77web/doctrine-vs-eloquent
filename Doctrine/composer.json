@@ -10,7 +10,8 @@
         "doctrine/orm": "^2.13",
         "symfony/cache": "^6.2",
         "monolog/monolog": "^3.2",
-        "gedmo/doctrine-extensions": "^3.10"
+        "gedmo/doctrine-extensions": "^3.10",
+        "doctrine/migrations": "^3.5"
     },
     "autoload": {
         "psr-4": {
