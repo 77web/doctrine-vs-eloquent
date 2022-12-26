@@ -17,5 +17,8 @@
         "psr-4": {
             "App\\Entity\\": "Entity"
         }
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "^1.6"
     }
 }
