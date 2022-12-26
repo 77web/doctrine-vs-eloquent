@@ -20,7 +20,6 @@ final class Version20221226140232 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE author_stat (id INTEGER NOT NULL, name VARCHAR(255) NOT NULL, books_count INTEGER NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE authors (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(255) NOT NULL)');
         $this->addSql('CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, author_id INTEGER DEFAULT NULL, title VARCHAR(255) NOT NULL, price INTEGER NOT NULL, description CLOB DEFAULT NULL, created_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
         , updated_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
@@ -34,7 +33,6 @@ final class Version20221226140232 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE author_stat');
         $this->addSql('DROP TABLE authors');
         $this->addSql('DROP TABLE books');
         $this->addSql('DROP TABLE reactions');
