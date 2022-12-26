@@ -15,7 +15,11 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Entity\\": "Entity"
+            "App\\Entity\\": "Entity",
+            "App\\Fixtures\\": "Fixtures"
         }
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "^1.6"
     }
 }
